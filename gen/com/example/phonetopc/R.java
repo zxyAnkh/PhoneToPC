@@ -22,31 +22,54 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int cancle=0x7f020000;
+        public static final int file=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int icon=0x7f020003;
+        public static final int pause=0x7f020004;
+        public static final int start=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000f;
-        public static final int btn_choosefile=0x7f08000b;
-        public static final int btn_choosereceive=0x7f080006;
-        public static final int btn_choosesend=0x7f080005;
-        public static final int btn_connect=0x7f080003;
-        public static final int btn_send=0x7f08000c;
-        public static final int edt_pcip=0x7f080002;
-        public static final int lv_receiveflie=0x7f080008;
-        public static final int lv_sendfile=0x7f08000d;
-        public static final int txt_filelist=0x7f080007;
-        public static final int txt_filename=0x7f08000a;
-        public static final int txt_filepath=0x7f080009;
-        public static final int txt_lv_file=0x7f08000e;
-        public static final int txt_pcip=0x7f080001;
-        public static final int txt_tips=0x7f080004;
-        public static final int txt_title=0x7f080000;
+        public static final int action_settings=0x7f08001e;
+        public static final int btn_choosechat=0x7f080016;
+        public static final int btn_choosereceive=0x7f080015;
+        public static final int btn_choosesend=0x7f080014;
+        public static final int btn_downloading=0x7f080004;
+        public static final int btn_login=0x7f080011;
+        public static final int btn_quit=0x7f080012;
+        public static final int btn_send=0x7f080002;
+        public static final int btn_upload=0x7f080019;
+        public static final int btn_uploading=0x7f08001a;
+        public static final int edt_dns=0x7f08000c;
+        public static final int edt_msg=0x7f080001;
+        public static final int edt_password=0x7f080010;
+        public static final int edt_username=0x7f08000e;
+        public static final int ibtn_cancle=0x7f080009;
+        public static final int ibtn_start=0x7f080008;
+        public static final int lv_chat=0x7f080000;
+        public static final int lv_down=0x7f080005;
+        public static final int lv_upfile=0x7f08001b;
+        public static final int prg_downloading=0x7f080007;
+        public static final int txt_dns=0x7f08000b;
+        public static final int txt_down=0x7f080003;
+        public static final int txt_downloading=0x7f080006;
+        public static final int txt_filename=0x7f080018;
+        public static final int txt_filepath=0x7f080017;
+        public static final int txt_lv_chat_content=0x7f08001c;
+        public static final int txt_lv_file=0x7f08001d;
+        public static final int txt_password=0x7f08000f;
+        public static final int txt_tips=0x7f080013;
+        public static final int txt_title=0x7f08000a;
+        public static final int txt_username=0x7f08000d;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_receive=0x7f030001;
-        public static final int activity_send=0x7f030002;
-        public static final int txt_lv_file=0x7f030003;
+        public static final int activity_chat=0x7f030000;
+        public static final int activity_download=0x7f030001;
+        public static final int activity_downloading=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_upload=0x7f030004;
+        public static final int txt_lv_chat=0x7f030005;
+        public static final int txt_lv_file=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f070000;

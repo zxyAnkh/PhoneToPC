@@ -23,25 +23,25 @@
             android:textSize="@dimen/activity_vertical_margin" />
 
         <Button
-            android:id="@+id/btn_choosefile"
+            android:id="@+id/btn_upload"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="选择文件"
+            android:text="上传"
             android:textSize="12sp" />
 
         <Button
-            android:id="@+id/btn_send"
+            android:id="@+id/btn_uploading"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发送"
+            android:text="上传中"
             android:textSize="12sp" />
 
     </LinearLayout>
 
     <ListView
-        android:id="@+id/lv_sendfile"
+        android:id="@+id/lv_upfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>

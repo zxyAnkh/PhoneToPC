@@ -1,0 +1,70 @@
+package com.example.phonetopc.control;
+
+/*参考网站：
+ * http://blog.csdn.net/chenzheng_java/article/details/6387116
+ * 
+ */
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
+
+//网络连接管理
+public class ConnectManager implements Runnable {
+	private static final String TAG = "ConnectManager";
+	private static final int TIME_OUT = 10 * 1000; // 超时时间
+	private Context mContext;
+	private Handler mHandler;// 定义向UI线程发送消息的Handler对象
+	private String URL = "zxyankh.imwork.net";
+
+	// 构造器
+	public ConnectManager(Handler handler, Context context) {
+		this.mHandler = handler;
+		this.mContext = context;
+	}
+
+	public void run() {
+		Socket socket = new Socket();
+		try {
+			socket.connect(new InetSocketAddress(URL, 5648), TIME_OUT);
+			BufferedReader bf = new BufferedReader(new InputStreamReader(
+					socket.getInputStream()));
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+					socket.getOutputStream()));
+			String outMsg = "zxy\nzxy";
+			System.getProperty("line.seperator");
+			bw.write(outMsg);
+			bw.flush();
+			String inMsg = bf.readLine() + System.getProperty("line.seperator");
+			Log.i(TAG, inMsg);
+			Message msg = new Message();
+			msg.what = 0x123;
+			msg.obj = "Login";
+			mHandler.sendMessage(msg);
+		} catch (SocketTimeoutException e) {
+			Message msg = new Message();
+			msg.what = 0x123;
+			msg.obj = "网络连接超时！";
+			mHandler.sendMessage(msg);
+		} catch (IOException io) {
+			io.printStackTrace();
+		}
+	}
+}
