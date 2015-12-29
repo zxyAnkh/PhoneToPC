@@ -18,6 +18,7 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
+import com.example.phonetopc.model.PasswordTransfer;
 import com.example.phonetopc.view.MainActivity;
 
 import android.app.Application;
@@ -67,8 +68,9 @@ public class ConnectManager implements Runnable {
 			socket.connect(new InetSocketAddress(URL, 5648), TIME_OUT);
 			br = getReader(socket);
 			pw = getWriter(socket);
-			String outMsg = message;
-			pw.println(outMsg);
+			String outMsg = PasswordTransfer.wordToPwd(message);
+			Log.d(TAG, outMsg);
+			pw.println("log"+outMsg);
 			//由于使用bufferedWriter时忘记写br.nextLine() 导致通信阻塞，寻找问题用了3天，写在这里，仅以此为戒
 			//2015-12-23 15:49
 			pw.flush();

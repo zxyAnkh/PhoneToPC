@@ -46,6 +46,10 @@
             android:name=".view.DownloadingActivity"
             android:label="正在下载" >
         </activity>
+        <activity
+            android:name=".view.UploadingActivity"
+            android:label="正在上传" >
+        </activity>
     </application>
 
 </manifest>

@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
 						}
 					};
 					cm = new ConnectManager(mHandler, MainActivity.this,
-							"log"+strUsername+strPassword);
+							strUsername+strPassword);
 					new Thread(cm).start();
 					if (isLogin == true) {
 						Log.d(TAG, "Connect Success");

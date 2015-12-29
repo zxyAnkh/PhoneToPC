@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/a2"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/txt_uploading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件名" />
+
+    <ProgressBar
+        android:id="@+id/prg_uploading"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.91" />
+
+    <ImageButton
+        android:id="@+id/ibtn_ups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/start"
+        android:src="@drawable/pause" />
+
+    <ImageButton
+        android:id="@+id/ibtn_upc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cancle"
+        android:src="@drawable/cancle" />
+
+</LinearLayout>

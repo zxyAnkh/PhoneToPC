@@ -1,18 +1,12 @@
 package com.example.phonetopc.view;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.StringReader;
 import java.util.ArrayList;
 
 import com.example.phonetopc.R;
-import com.example.phonetopc.control.ChatListAdapter;
 import com.example.phonetopc.control.FileDownListAdapter;
 import com.example.phonetopc.control.FileDownManager;
-import com.example.phonetopc.control.FileDownloader;
-import com.example.phonetopc.control.FileList;
 import com.example.phonetopc.control.FileLoader;
-import com.example.phonetopc.model.ChatInfo;
 import com.example.phonetopc.model.FileDownInfo;
 import com.example.phonetopc.model.FileLoadInfo;
 
@@ -31,12 +25,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class DownloadActivity extends Activity {
 	private static final String TAG = "DownloadActivity";
-	private FileList mFileList;
 	private Button btn_downloading;
 	private ListView lv_down;
 	private Handler mHandler;
@@ -45,7 +37,7 @@ public class DownloadActivity extends Activity {
 	private FileDownListAdapter mAdapter;
 	private static final String FILE_PATH = android.os.Environment
 			.getExternalStorageDirectory().getAbsolutePath() + "/FileDatabase";
-	//以为是在sd卡中建立文件夹，结果建在了内部存储中 12-28 19:48
+	// 以为是在sd卡中建立文件夹，结果建在了内部存储中 12-28 19:48
 	ArrayList<FileLoadInfo> fileList = new ArrayList<FileLoadInfo>();
 
 	@Override
@@ -60,18 +52,18 @@ public class DownloadActivity extends Activity {
 		createDirectory();
 		lv_down = (ListView) findViewById(R.id.lv_down);
 		btn_downloading = (Button) findViewById(R.id.btn_downloading);
-		mFileList = new FileList(this);
 		mHandler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == 0x123) {
 					String info = msg.obj.toString();
+					// test.txt.12.0 test txt 12.0
 					FileLoadInfo fli = new FileLoadInfo();
 					fli.setFile_name(info.substring(0, info.indexOf(".")));
-					fli.setFile_type(info.substring(info.indexOf(".") + 1,
-							info.lastIndexOf(".")));
-					fli.setFile_size(Integer.parseInt(info.substring(info
-							.lastIndexOf(".") + 1)));
+					info = info.substring(info.indexOf(".") + 1);
+					fli.setFile_type(info.substring(0, info.indexOf(".")));
+					info = info.substring(info.indexOf(".") + 1);
+					fli.setFile_size(Double.valueOf(info));
 					reloadList(fli);
 					// Log.d(TAG, msg.obj.toString());
 				}
@@ -89,6 +81,8 @@ public class DownloadActivity extends Activity {
 						position);
 				dialogSure(file.getFile_name(), file.getFile_type(),
 						file.getFile_size());
+				// Log.d(TAG,
+				// "dialogSure "+file.getFile_name()+file.getFile_type()+file.getFile_size());
 			}
 
 		});
@@ -108,13 +102,14 @@ public class DownloadActivity extends Activity {
 		// TODO Auto-generated method stub
 		String strdir = FILE_PATH;
 		File dir = new File(strdir);
-		if (!dir.exists()){
+		if (!dir.exists()) {
 			dir.mkdir();
 			Log.d(TAG, "创建文件夹");
 		}
 	}
 
-	private void dialogSure(final String arg0, final String arg1, final int arg2) {
+	private void dialogSure(final String arg0, final String arg1,
+			final double arg2) {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		DialogInterface.OnClickListener dialogOnClicListener = new DialogInterface.OnClickListener() {
@@ -148,10 +143,10 @@ public class DownloadActivity extends Activity {
 	}
 
 	// arg0 文件名 arg1 文件类型 arg2 文件大小
-	private void startDownload(String arg0, String arg1, int arg2) {
+	private void startDownload(String arg0, String arg1, double arg2) {
 		fdm = new FileDownManager(this);
 		FileDownInfo fdi = new FileDownInfo(arg0, arg1, 0, arg2);
 		fdm.addDownload(fdi);
-//		Log.d(TAG, arg0+arg1+arg2);
+		// Log.d(TAG, arg0+arg1+arg2);
 	}
 }
